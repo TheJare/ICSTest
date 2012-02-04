@@ -1,0 +1,2 @@
+ics -j all.js -c vec2.iced jengine.iced game.iced
+uglify all.js > game.min.js
