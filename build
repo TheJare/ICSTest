@@ -1,2 +1,3 @@
-ics -j all.js -c utils.iced vec2.iced jengine.iced game.iced
-uglify all.js > game.min.js
+mkdir -p lib
+ics -j lib/all.js -c src/utils.iced src/vec2.iced src/jengine.iced src/game.iced
+uglify lib/all.js > bin/game.min.js
