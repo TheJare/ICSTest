@@ -1,27 +1,8 @@
-# Misc utils
-
-LOG = (a) -> console.log(if typeof a is "object" then JSON.stringify a else a); return
-MakeColor = (r,g,b,a) -> "rgba("+Math.floor(Clamp r, 0, 255) + "," + Math.floor(Clamp g, 0, 255)+","+Math.floor(Clamp b, 0, 255)+","+(if a? then a else "255") + ")"
-
-Pow2 = (v) -> v*v
-Lerp = (a,b,t) -> a+(b-a)*t
-Clamp = (v,a,b) -> if v<a then a else if v>b then b else v
-Wrap = (v,a,b) -> if v<a then (v+(b-a)) else if v>b then (v-(b-a)) else v
-RandomInt = (v) -> Math.floor Math.random()*v
-RandomIntRange = (a,b) -> Math.floor Math.random()*(b-a)+a
-RandomFloat = (v) -> Math.random()*v
-RandomFloatRange = (a,b) -> Math.random()*(b-a)+a
-RandomColor = (min, max, a) -> min ||= 0; max ||= 255; MakeColor RandomIntRange(min, max), RandomIntRange(min, max), RandomIntRange(min, max), a
-
-window.requestAnimationFrame ||= 
-    window.webkitRequestAnimationFrame ||
-    window.mozRequestAnimationFrame ||
-    window.oRequestAnimationFrame ||
-    window.msRequestAnimationFrame ||
-    (callback, element) ->
-        window.setTimeout callback, 1000 / 60
+# Iced CoffeeScript test
+# (C) Copyright 2012 by Javier Arevalo
 
 globalLayer = 0
+minSize = 1
 
 class Blob extends Go
 	constructor: ->
@@ -30,7 +11,7 @@ class Blob extends Go
 
 	reset: ->
 		@maxlife = RandomFloatRange 0.1, 0.8
-		@radius = RandomIntRange 5, 50
+		@radius = minSize*RandomFloatRange 0.01, 0.10
 		@color = RandomColor(0, 255, 0.2)
 		@pos = new Vec2 RandomInt(canvas.width), RandomInt(canvas.height)
 
@@ -63,6 +44,7 @@ blobs = new GoContainer
 rebuildCanvas = () ->
 	canvas.width = uicontainer.width() #window.document.body.clientWidth
 	canvas.height = uicontainer.height() #window.document.body.clientHeight
+	minSize = Math.min(canvas.width, canvas.height)
 	blobs.xform = (new Mat2).translate(canvas.width/2, canvas.height/2).scale(0.5, 0.5)
 	return
 
@@ -70,17 +52,17 @@ lastTime = 0
 tick = () ->
 	# uicontainer.css "background", RandomColor 10, 30
 	timeNow = Date.now()
-	elapsed = timeNow - lastTime
+	elapsed = (timeNow - lastTime)*0.001
 	if elapsed > 0
 		if lastTime != 0
 			# Cap max elapsed time to 1 second to avoid death spiral
-			if elapsed > 1000 then elapsed = 1000
-			blobs.tick elapsed*0.001
+			if elapsed > 1 then elapsed = 1
+			blobs.tick elapsed
+			blobs.xform = blobs.xform.rotate elapsed*0.8
 			blobs.render ctx
 		lastTime = timeNow
 
 	requestAnimationFrame tick
-	blobs.xform = blobs.xform.rotate(0.01)
 	return
 
 $ () ->
