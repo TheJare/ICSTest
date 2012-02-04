@@ -4,7 +4,9 @@
 ## Summary
 
 Little game-engine-graphics-thing in Iced CoffeeScript, to help me learn this language.
-Also my first attempt at pushing stuff to github, so if you run into this repo, please bear with me
+Iced CoffeeScript is a variant of CoffeeScript that adds callback/async primitives to the language. See http://maxtaco.github.com/coffee-script/ for more details.
+
+This is also my first attempt at pushing stuff to github, so if you run into this repo, please bear with me.
 
 ## The code
 

@@ -66,10 +66,19 @@ rebuildCanvas = () ->
 	blobs.xform = (new Mat2).translate(canvas.width/2, canvas.height/2).scale(0.5, 0.5)
 	return
 
+lastTime = 0
 tick = () ->
 	# uicontainer.css "background", RandomColor 10, 30
-	blobs.tick 1/60
-	blobs.render(ctx)
+	timeNow = Date.now()
+	elapsed = timeNow - lastTime
+	if elapsed > 0
+		if lastTime != 0
+			# Cap max elapsed time to 1 second to avoid death spiral
+			if elapsed > 1000 then elapsed = 1000
+			blobs.tick elapsed*0.001
+			blobs.render ctx
+		lastTime = timeNow
+
 	requestAnimationFrame tick
 	blobs.xform = blobs.xform.rotate(0.01)
 	return
