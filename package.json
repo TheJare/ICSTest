@@ -1,0 +1,10 @@
+{
+    "name": "ICSTest"
+  , "version": "0.0.1"
+  , "description": "ICed CoffeeScript game coding test"
+  , "keywords": []
+  , "author": "Javier Arevalo <jare@iguanademos.com>"
+  , "dependencies": {}
+  , "main": "bin/index.html"
+  , "engines": { }
+}
