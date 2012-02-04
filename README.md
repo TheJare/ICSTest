@@ -10,6 +10,9 @@ This is also my first attempt at pushing stuff to github, so if you run into thi
 
 ## The code
 
+### utils.iced
+Bunch of common utility functions
+
 ### vec2.iced
 A simple 2D vector & matrix library
 
@@ -24,3 +27,8 @@ Not really a game at the moment, just a small graphics experiment with colored r
 ### index.html
 The page that contains the canvas and runs the code.
 It uses jQuery, probably for not a lot - I just include it by default everywhere.
+
+### build
+Script to build the compiled, merged and uglified game.min.js from the .iced sources
+Note that uses 'ics' as the command to invoke the Iced CoffeeScript compiler, and 'uglify' for the minification.
+You can find and install both uglify and iced-coffee-script as node packages using nodejs' npm.
