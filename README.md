@@ -28,7 +28,8 @@ Not really a game at the moment, just a small graphics experiment with colored r
 The page that contains the canvas and runs the code.
 It uses jQuery, probably for not a lot - I just include it by default everywhere.
 
-### build
-Script to build the compiled, merged and uglified game.min.js from the .iced sources
-Note that uses 'ics' as the command to invoke the Iced CoffeeScript compiler, and 'uglify' for the minification.
-You can find and install both uglify and iced-coffee-script as node packages using nodejs' npm.
+## Build instructions
+
+Note that the Makefile uses 'ics' as the command to invoke the Iced CoffeeScript compiler, and 'uglify' for minification.
+You can install both uglify and iced-coffee-script as nodejs packages using npm. Go to http://nodejs.org/ to install Node and npm.
+I believe Iced installs its script as 'coffee' like the original compiler, but I wanted to avoid the name clash.
