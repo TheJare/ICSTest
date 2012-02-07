@@ -25,10 +25,10 @@ $(addprefix $(OUTDIR)/, $(STATIC_FILES)): $(addprefix $(SRCDIR)/, $(STATIC_FILES
 
 $(OUTFILE): $(TEMPFILE)
 	@mkdir -p $(OUTDIR)
-	uglify $< > $@
+	uglifyjs $< > $@
 
 $(TEMPFILE): $(addprefix $(SRCDIR)/, $(SOURCE_FILES))
 	@mkdir -p $(TEMPDIR)
-	ics -j $@ -c $(addprefix $(SRCDIR)/, $(SOURCE_FILES))
+	iced -j $@ -c $(addprefix $(SRCDIR)/, $(SOURCE_FILES))
 
 .PHONY: build clean

@@ -30,6 +30,6 @@ It uses jQuery, probably for not a lot - I just include it by default everywhere
 
 ## Build instructions
 
-Note that the Makefile uses 'ics' as the command to invoke the Iced CoffeeScript compiler, and 'uglify' for minification.
-You can install both uglify and iced-coffee-script as nodejs packages using npm. Go to http://nodejs.org/ to install Node and npm.
+Note that the Makefile uses 'iced' as the command to invoke the Iced CoffeeScript compiler, and 'uglifyjs' for minification.
+You can install both uglify-js and iced-coffee-script as nodejs packages using npm. Go to http://nodejs.org/ to install Node and npm.
 I believe Iced installs its script as 'coffee' like the original compiler, but I wanted to avoid the name clash.
